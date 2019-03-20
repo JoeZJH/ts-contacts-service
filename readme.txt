@@ -25,4 +25,4 @@ docker run -p 12347:12347 --name ts-contacts-service --link contacts-mongo:conta
                      VerifyResult.class);
         return tokenResult;
     }
-
+Test
