@@ -1,5 +1,6 @@
 package contacts;
 
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -21,6 +22,10 @@ public class ContactsApplication {
 
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        return builder.build();
+	SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+	requestFactory.setConnectTimeout(3*1000);
+	requestFactory.setReadTimeout(3*1000);
+	return new RestTemplate(requestFactory);
+        // return builder.build();
     }
 }
